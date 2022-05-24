@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_play"
+    android:background="@color/main_bg">
+
+    <TextView
+        android:id="@+id/tryt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        tools:ignore="HardcodedText,MissingConstraints"
+        android:textAlignment="center"
+        android:textColor="@color/greeting_txt"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp"
+        />
+
+    <ImageView
+        android:id="@+id/smile"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+
+        app:layout_constraintTop_toBottomOf="@id/tryt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="15dp"
+        />
+
+    <EditText
+        android:id="@+id/try_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginTop="30dp"
+
+        android:backgroundTint="#FFDD00"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textColor="#FFDD00"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/smile" />
+
+    <Button
+        android:id="@+id/btn_try"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/play_btn_try"
+        android:textSize="30sp"
+        android:backgroundTint="@color/greeting_txt"
+
+        app:layout_constraintTop_toBottomOf="@id/try_number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="15dp"
+        android:layout_margin="8dp"/>
+
+    <Button
+        android:id="@+id/btn_again"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/play_btn_again"
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/greeting_txt"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@id/try_number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="15dp"
+        android:layout_margin="8dp"/>
+
+
+        <FrameLayout
+            android:id="@+id/frame_box"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintTop_toBottomOf="@id/btn_try"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="8dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

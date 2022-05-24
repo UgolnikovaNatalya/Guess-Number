@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">GuessNumber</string>
+<!--    Messages for main activity-->
+    <string name="main_greet">Enter you magic number</string>
+
+<!--    Messages for play activity-->
+    <string name="play_greet">Try to guess the magic number! \nYou have the only %1$s attempts!\nGood luck!</string>
+    <string name="bigger">Your number is bigger than magic number!\n\nYou have %1$s attempts left.</string>
+    <string name="less">Your number is less than magic number!\n\nYou have %1$s attempts left.</string>
+    <string name="loose">You lost\.\.\.</string>
+    <string name="win">You win!</string>
+
+<!--    Messages for toast-->
+    <string name="enter_number">Please enter your number</string>
+    <string name="start_bigger">Magic number is bigger than 100</string>
+    <string name="error_str_in_numb">Your magic number has letters</string>
+
+<!--    Text for buttons-->
+    <string name="main_btn_letsgo">Let\'s go!</string>
+    <string name="play_btn_try">TRY!</string>
+    <string name="play_btn_again">PLAY AGAIN!</string>
+
+</resources>
