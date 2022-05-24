@@ -20,17 +20,31 @@ class PlayPresenter(
         when  {
             attempts == DEFAULT_ATTEMPT -> {
                 view.changeGreetMessage(R.string.play_greet, attempts)
+                view.changePicture(R.drawable.smile)
             }
             attempts > 0 -> {
-                if (myNumber == magicNumber)
+                if (myNumber == magicNumber) {
                     view.changeGreetMessage(R.string.win, attempts)
-                if (myNumber < magicNumber)
+                    view.hideTryNumber()
+                    view.hideButtonTry()
+                    view.showButtonPlayAgain()
+                    view.changePicture(R.drawable.feuerwerk)
+                }
+                if (myNumber < magicNumber) {
                     view.changeGreetMessage(R.string.less, attempts)
-                if (myNumber > magicNumber)
+                    view.changePicture(R.drawable.sad_smile)
+                }
+                if (myNumber > magicNumber) {
                     view.changeGreetMessage(R.string.bigger, attempts)
+                    view.changePicture(R.drawable.sad_smile)
+                }
             }
             else -> {
                 view.changeGreetMessage(R.string.loose, attempts)
+                view.hideTryNumber()
+                view.hideButtonTry()
+                view.showButtonPlayAgain()
+                view.changePicture(R.drawable.sad_smile)
             }
         }
 
@@ -38,15 +52,13 @@ class PlayPresenter(
 
     override fun checkNumber(tryNum: String) {
         try {
-
+            //вычитаем попытку и записываем ее в sp
+            attempts --
+            playRepo.updateAttempt(attempts)
+            Log.d("attemptN", attempts.toString())
             if (tryNum.isEmpty()) {
                 view.showToast(R.string.enter_number)
             } else {
-                //вычитаем попытку и записываем ее в sp
-                attempts --
-                playRepo.updateAttempt(attempts)
-                Log.d("attemptN", attempts.toString())
-
                 if (attempts > 0) {
                     when {
                         magicNumber == tryNum.toInt() -> {
@@ -54,15 +66,18 @@ class PlayPresenter(
                             view.hideTryNumber()
                             view.hideButtonTry()
                             view.showButtonPlayAgain()
+                            view.changePicture(R.drawable.feuerwerk)
                         }
                         magicNumber > tryNum.toInt() -> {
                             view.changeGreetMessage(R.string.less, attempts)
                             view.clearTryNumber()
+                            view.changePicture(R.drawable.sad_smile)
                         }
 
                         magicNumber < tryNum.toInt() -> {
                             view.changeGreetMessage(R.string.bigger, attempts)
                             view.clearTryNumber()
+                            view.changePicture(R.drawable.sad_smile)
                         }
                     }
                 } else {
@@ -70,10 +85,10 @@ class PlayPresenter(
                     view.hideTryNumber()
                     view.hideButtonTry()
                     view.showButtonPlayAgain()
+                    view.changePicture(R.drawable.sad_smile)
                 }
             }
             playRepo.updateUserCurrentNumber(tryNum.toInt())
-
         }
         catch (e: NumberFormatException){
             Log.d("error", "Empty try number field")

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.example.mvpguesnumber.dataSaving.SavedUserNumberImpl
 import com.example.mvpguesnumber.mvp_play.PlayContract
@@ -13,7 +14,7 @@ import com.example.mvpguesnumber.mvp_play.PlayRepo
 class PlayActivity : AppCompatActivity(), PlayContract.PlayView {
 
     lateinit var greetTxt: TextView
-    lateinit var picture: ImageView
+    lateinit var pictures: ImageView
     lateinit var tryNumber: EditText
     lateinit var tryBtn: Button
     lateinit var againBtn: Button
@@ -34,7 +35,7 @@ class PlayActivity : AppCompatActivity(), PlayContract.PlayView {
         setContentView(R.layout.activity_play)
 
         greetTxt = findViewById(R.id.tryt)
-        picture = findViewById(R.id.smile)
+        pictures = findViewById(R.id.smile)
         tryNumber = findViewById(R.id.try_number)
         tryBtn = findViewById(R.id.btn_try)
         againBtn = findViewById(R.id.btn_again)
@@ -55,7 +56,7 @@ class PlayActivity : AppCompatActivity(), PlayContract.PlayView {
     }
 
     override fun changePicture(picture: Int) {
-        TODO("Not yet implemented")
+        pictures.setImageDrawable(ContextCompat.getDrawable(this,picture))
     }
 
     override fun clearTryNumber() {
