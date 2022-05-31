@@ -2,10 +2,12 @@ package com.example.mvpguesnumber
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import com.example.mvpguesnumber.dataSaving.SavedComputerNumberImpl
 import com.example.mvpguesnumber.dataSaving.SavedUserNumberImpl
 import com.example.mvpguesnumber.mvp_play.PlayContract
 import com.example.mvpguesnumber.mvp_play.PlayPresenter
@@ -49,6 +51,7 @@ class PlayActivity : AppCompatActivity(), PlayContract.PlayView {
             startGameAgain()
         }
 
+
     }
 
     override fun changeGreetMessage(message: Int, attempts: Int) {
@@ -83,12 +86,11 @@ class PlayActivity : AppCompatActivity(), PlayContract.PlayView {
         tryBtn.isVisible = false
     }
 
-
     override fun showToast(message: Int) {
         Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun startGameAgain() {
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, StartActivity::class.java))
     }
 }

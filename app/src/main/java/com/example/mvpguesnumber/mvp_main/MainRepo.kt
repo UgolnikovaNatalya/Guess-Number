@@ -2,7 +2,7 @@ package com.example.mvpguesnumber.mvp_main
 
 import com.example.mvpguesnumber.SavedAttempts
 import com.example.mvpguesnumber.SavedMagicNumber
-const val DEFAULT_ATTEMPT = 2
+const val DEFAULT_ATTEMPT = 7
 
 //class MainRepo (private val sharedPreferences : SharedPreferences): MainContract.MainRepo
 class MainRepo(

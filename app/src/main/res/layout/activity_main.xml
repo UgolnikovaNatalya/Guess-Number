@@ -20,7 +20,7 @@
         android:layout_marginTop="145dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:padding="12dp">
+        android:padding="18dp">
 
         <TextView
             android:id="@+id/greeting"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:textColor="@color/greeting_txt"
-            android:textSize="24sp"
+            android:textSize="@dimen/main_text"
             tools:ignore="HardcodedText" />
 
         <EditText
@@ -40,17 +40,17 @@
             android:textAlignment="center"
             android:textColor="@color/greeting_txt"
             android:backgroundTint="@color/greeting_txt"
-            android:textSize="24sp"
+            android:textSize="@dimen/button_text"
             tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/btn_start_game"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="25dp"
-            android:textColorHint="@color/greeting_txt"
+            android:textSize="@dimen/button_text"
             android:backgroundTint="@color/greeting_txt"
-            android:text="@string/main_btn_letsgo" />
+            android:text="@string/main_btn_letsgo"
+            android:textColorHint="@color/greeting_txt" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

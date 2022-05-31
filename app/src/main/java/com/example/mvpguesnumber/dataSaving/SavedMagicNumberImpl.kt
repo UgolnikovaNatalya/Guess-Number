@@ -1,6 +1,7 @@
 package com.example.mvpguesnumber
 
 import android.content.Context
+import android.util.Log
 
 private const val SP_NAME = "SM_PREF_NAME"
 private const val KEY_SAVE_MN = "SAVED_MN_KEY"
@@ -18,7 +19,7 @@ class SavedMagicNumberImpl(context: Context) : SavedMagicNumber {
 
     override var magicNumber: Int
         get() {
-            return sp.getInt(KEY_SAVE_MN, 0)
+            return sp.getInt(KEY_SAVE_MN, -1)
         }
         set(value) {
             sp.edit()

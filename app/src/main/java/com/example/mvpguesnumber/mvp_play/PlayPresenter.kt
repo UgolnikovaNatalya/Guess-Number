@@ -1,29 +1,33 @@
 package com.example.mvpguesnumber.mvp_play
 
 
+import android.app.Activity
+import android.content.Context
 import android.util.Log
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import com.example.mvpguesnumber.R
 import com.example.mvpguesnumber.mvp_main.DEFAULT_ATTEMPT
 import java.lang.NumberFormatException
 
 class PlayPresenter(
-    private val view: PlayContract.PlayView,
-    private val playRepo: PlayContract.PlayRepo
+        private val view: PlayContract.PlayView,
+        private val playRepo: PlayContract.PlayRepo
 ) : PlayContract.PlayPresenter {
 
     private var attempts = playRepo.getAttempt()
-    private val magicNumber = playRepo.getMagicNumber()
+    private var magicNumber = playRepo.getMagicNumber()
     private val myNumber = playRepo.getUserCurrentNumber()
 
     override fun load() {
-        Log.d("attempt", attempts.toString())
-        when  {
+        when {
             attempts == DEFAULT_ATTEMPT -> {
                 view.changeGreetMessage(R.string.play_greet, attempts)
                 view.changePicture(R.drawable.smile)
             }
             attempts > 0 -> {
                 if (myNumber == magicNumber) {
+                    Log.d("comp", "$magicNumber - in equals")
                     view.changeGreetMessage(R.string.win, attempts)
                     view.hideTryNumber()
                     view.hideButtonTry()
@@ -38,6 +42,7 @@ class PlayPresenter(
                     view.changeGreetMessage(R.string.bigger, attempts)
                     view.changePicture(R.drawable.sad_smile)
                 }
+                Log.d("comp", "$magicNumber - playPresenter Load")
             }
             else -> {
                 view.changeGreetMessage(R.string.loose, attempts)
@@ -47,18 +52,21 @@ class PlayPresenter(
                 view.changePicture(R.drawable.sad_smile)
             }
         }
-
     }
 
     override fun checkNumber(tryNum: String) {
         try {
-            //вычитаем попытку и записываем ее в sp
-            attempts --
+            //subtract an attempt and rewrite in sp
+            attempts--
             playRepo.updateAttempt(attempts)
-            Log.d("attemptN", attempts.toString())
+
             if (tryNum.isEmpty()) {
                 view.showToast(R.string.enter_number)
-            } else {
+            }
+            if (tryNum.toInt() > 100){
+                view.showToast(R.string.try_bigger)
+                view.clearTryNumber()
+            }else {
                 if (attempts > 0) {
                     when {
                         magicNumber == tryNum.toInt() -> {
@@ -89,12 +97,9 @@ class PlayPresenter(
                 }
             }
             playRepo.updateUserCurrentNumber(tryNum.toInt())
-        }
-        catch (e: NumberFormatException){
+        } catch (e: NumberFormatException) {
             Log.d("error", "Empty try number field")
         }
-
-
-
     }
+
 }

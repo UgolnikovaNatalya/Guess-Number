@@ -1,5 +1,6 @@
 package com.example.mvpguesnumber.mvp_play
 
+import android.view.View
 import android.widget.EditText
 import androidx.annotation.DrawableRes
 
@@ -8,6 +9,7 @@ interface PlayContract {
     interface PlayView {
         fun changeGreetMessage(message: Int, attempts: Int)
         fun changePicture(@DrawableRes picture: Int)
+
         fun clearTryNumber()
         fun hideTryNumber()
 
@@ -16,6 +18,7 @@ interface PlayContract {
 
         fun showButtonTry()
         fun hideButtonTry()
+
         fun showToast(message: Int)
         fun startGameAgain()
     }
