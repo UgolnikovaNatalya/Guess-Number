@@ -1,7 +1,9 @@
 package com.example.mvpguesnumber.mvp_play
 
+import android.util.Log
 import com.example.mvpguesnumber.SavedAttempts
 import com.example.mvpguesnumber.SavedMagicNumber
+import com.example.mvpguesnumber.dataSaving.SavedComputerNumber
 import com.example.mvpguesnumber.dataSaving.SavedNumber
 
 class PlayRepo (private val savedMagicNumber: SavedMagicNumber,

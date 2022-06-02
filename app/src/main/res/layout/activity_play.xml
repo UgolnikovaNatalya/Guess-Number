@@ -12,15 +12,16 @@
         android:id="@+id/tryt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
+        android:textSize="26sp"
         tools:ignore="HardcodedText,MissingConstraints"
         android:textAlignment="center"
         android:textColor="@color/greeting_txt"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="50dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginStart="18dp"
         />
 
     <ImageView
@@ -28,7 +29,6 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@android:color/transparent"
-
         app:layout_constraintTop_toBottomOf="@id/tryt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,14 +39,12 @@
         android:id="@+id/try_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:layout_marginTop="30dp"
-
+        android:layout_margin="18dp"
         android:backgroundTint="#FFDD00"
         android:inputType="number"
         android:textAlignment="center"
         android:textColor="#FFDD00"
-        android:textSize="24sp"
+        android:textSize="@dimen/button_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/smile" />
@@ -56,36 +54,32 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="@string/play_btn_try"
-        android:textSize="30sp"
+        android:textSize="@dimen/button_text"
         android:backgroundTint="@color/greeting_txt"
-
         app:layout_constraintTop_toBottomOf="@id/try_number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="15dp"
-        android:layout_margin="8dp"/>
+        android:layout_margin="18dp"/>
 
     <Button
         android:id="@+id/btn_again"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="@string/play_btn_again"
-        android:textSize="30sp"
+        android:textSize="@dimen/button_text"
         android:textColor="@color/white"
         android:backgroundTint="@color/greeting_txt"
         android:visibility="invisible"
         app:layout_constraintTop_toBottomOf="@id/try_number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="15dp"
-        android:layout_margin="8dp"/>
+        android:layout_margin="18dp"/>
 
 
         <FrameLayout
             android:id="@+id/frame_box"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-
             app:layout_constraintTop_toBottomOf="@id/btn_try"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

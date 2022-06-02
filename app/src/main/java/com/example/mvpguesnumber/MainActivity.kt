@@ -7,14 +7,17 @@ import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.mvpguesnumber.databinding.ActivityMainBinding
 import com.example.mvpguesnumber.mvp_main.MainContract
 import com.example.mvpguesnumber.mvp_main.MainPresenter
 import com.example.mvpguesnumber.mvp_main.MainRepo
 
 class MainActivity : AppCompatActivity(), MainContract.MainView {
-    lateinit var magicNumber: EditText
-    lateinit var startButton: View
-    lateinit var greetTex: TextView
+    private val viewBinding by viewBinding(
+        ActivityMainBinding :: bind,
+        R.id.root
+    )
 
     private val presenter: MainContract.MainPresenter by lazy {
         MainPresenter(
@@ -29,18 +32,15 @@ class MainActivity : AppCompatActivity(), MainContract.MainView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        greetTex = findViewById(R.id.greeting)
-        startButton = findViewById(R.id.btn_start_game)
-        magicNumber = findViewById(R.id.magic_number)
 
         showGreetMessage()
-        startButton.setOnClickListener {
-            presenter.saveMN(magicNumber.text.toString())
+        viewBinding.btnStartGame.setOnClickListener {
+            presenter.saveMN(viewBinding.magicNumber.text.toString())
         }
     }
 
     override fun showGreetMessage() {
-        greetTex.setText(R.string.main_greet)
+        viewBinding.greeting.setText(R.string.main_greet)
     }
 
     override fun showToast(message: Int) {
@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity(), MainContract.MainView {
     }
 
     override fun clearMagicNumber() {
-        magicNumber.setText("")
+        viewBinding.magicNumber.setText("")
     }
 
     override fun startNewActivity() {
