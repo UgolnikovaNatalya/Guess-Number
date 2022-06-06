@@ -45,7 +45,7 @@ class PlayPresenter(
                 Log.d("comp", "$magicNumber - playPresenter Load")
             }
             else -> {
-                view.changeGreetMessage(R.string.loose, attempts)
+                view.changeGreetMessage(R.string.loose, magicNumber)
                 view.hideTryNumber()
                 view.hideButtonTry()
                 view.showButtonPlayAgain()
@@ -89,7 +89,7 @@ class PlayPresenter(
                         }
                     }
                 } else {
-                    view.changeGreetMessage(R.string.loose, attempts)
+                    view.changeGreetMessage(R.string.loose, magicNumber)
                     view.hideTryNumber()
                     view.hideButtonTry()
                     view.showButtonPlayAgain()
