@@ -2,12 +2,10 @@ package com.example.mvpguesnumber
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import com.example.mvpguesnumber.dataSaving.SavedComputerNumberImpl
 import com.example.mvpguesnumber.dataSaving.SavedUserNumberImpl
 import com.example.mvpguesnumber.mvp_play.PlayContract
 import com.example.mvpguesnumber.mvp_play.PlayPresenter
@@ -91,6 +89,11 @@ class PlayActivity : AppCompatActivity(), PlayContract.PlayView {
     }
 
     override fun startGameAgain() {
-        startActivity(Intent(this, StartActivity::class.java))
+        //finish prev activity
+
+        val intent = Intent(this, StartActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+
     }
 }
